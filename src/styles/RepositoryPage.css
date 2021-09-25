@@ -1,0 +1,26 @@
+.repository__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+img {
+    width: 240px;
+    height: 240px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.back {
+    width: fit-content;
+    padding: 12px 32px;
+    background-color: #0969da;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 6px;
+    position: relative;
+    top: 3px;
+    left: 3px;
+}

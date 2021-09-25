@@ -1,0 +1,9 @@
+.list__wrapper {
+    margin-top: 50px;
+}
+
+.repositories__count {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+}
