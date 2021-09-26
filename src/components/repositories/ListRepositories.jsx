@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Repository from "./Repository";
-import '../styles/ListRepositories.css'
+import Repository from "../repository/Repository";
+import '../../styles/ListRepositories.css'
 
 const ListRepositories = ({repositories, lastElement}) => {
     const [length, setLength] = useState(repositories.length)

@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
+import '../../styles/Input.css';
 
-const Input = ({setRequest}) => {
-    const [search, setSearch] = useState('')
+const Input = ({setRequest, fetchRepositories}) => {
+    const [search, setSearch] = useState('jetrockets')
+
+    const toFetch = () => {
+        setRequest(search)
+        fetchRepositories(search)
+    }
 
     return (
         <div>
@@ -11,13 +17,9 @@ const Input = ({setRequest}) => {
                 type="text"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' ? setRequest(search) : ''}
+                onKeyDown={e => e.key === 'Enter' ? toFetch(search) : ''}
             />
-            <button onClick={() => {
-                if (search) {
-                    setRequest(search)
-                }
-            }}>Искать</button>
+            <button onClick={() => toFetch()}>Искать</button>
         </div>
     );
 };

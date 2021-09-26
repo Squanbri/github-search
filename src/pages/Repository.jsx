@@ -19,7 +19,7 @@ const Repository = () => {
     return (
         <div className="repository__wrapper">
             <img src={repository?.owner?.avatar_url} alt=""/>
-            <Link to="/repositories" className="back">Назад</Link>
+            <Link to="/" className="back">Назад</Link>
         </div>
     );
 };

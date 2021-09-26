@@ -1,0 +1,20 @@
+svg {
+    display: flex;
+    margin: auto;
+}
+
+circle {
+    fill: white;
+    stroke: #61dafb;
+    stroke-width: 5;
+    stroke-dasharray: 250;
+    stroke-dashoffset: 1000;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
+    }
+}

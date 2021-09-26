@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import  '../styles/Pagination.css';
+import  '../../styles/Pagination.css';
 
 const Pagination = ({totalCount, limit, page, setPage}) => {
     const [pageNumbers, setPageNumbers] = useState([])

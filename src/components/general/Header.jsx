@@ -1,6 +1,7 @@
 import React from 'react';
-import '../styles/Header.css';
-import { ReactComponent as ReactSvg } from '../assets/icons/react.svg'
+import '../../styles/Header.css';
+import { ReactComponent as ReactSvg } from '../../assets/icons/react.svg'
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -13,7 +14,7 @@ const Header = () => {
             <nav>
                 <ul>
                     <li>
-                        <a href="/repositories">Поиск</a>
+                        <Link to="/">Поиск</Link>
                     </li>
                 </ul>
             </nav>

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/Repository.css'
-import {ReactComponent as StarSvg} from '../assets/icons/star.svg'
-import {ReactComponent as RepositorySvg} from '../assets/icons/repository.svg'
+import '../../styles/Repository.css'
+import {ReactComponent as StarSvg} from '../../assets/icons/star.svg'
+import {ReactComponent as RepositorySvg} from '../../assets/icons/repository.svg'
 import {Link} from "react-router-dom";
 
 const Repository = ({repository}) => {
