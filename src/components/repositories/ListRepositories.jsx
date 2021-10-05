@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Repository from "../repository/Repository";
 import '../../styles/ListRepositories.css'
+import repositories from "../../state/repositories";
+import {observer} from "mobx-react-lite";
 
-const ListRepositories = ({repositories, lastElement}) => {
-    const [length, setLength] = useState(repositories.length)
-
+const ListRepositories = observer(() => {
     return (
         <div>
             <ul className="list__repositories">
-                { repositories.length === 0
+                { repositories.repositories.length === 0
                     ? <div> Мы не нашли репзиториев по вашему запросу </div>
                     :
-                        repositories.map((repository, i) =>
+                    repositories.repositories.map(repository =>
                             <Repository repository={repository} key={repository.id}/>
                         )
                 }
             </ul>
         </div>
     );
-};
+});
 
 export default ListRepositories;

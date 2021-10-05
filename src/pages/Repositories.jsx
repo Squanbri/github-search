@@ -1,44 +1,32 @@
-import React, {useMemo, useState} from "react";
-import RepositoryService from "../API/RepositoryService";
+import React from "react";
 import Input from "../components/repositories/Input";
 import ListRepositories from "../components/repositories/ListRepositories";
 import Pagination from "../components/repositories/Pagination";
 import '../styles/Repositories.css'
 import Loader from "../components/general/Loader";
+import repositories from "../state/repositories";
+import {observer} from "mobx-react-lite";
 
-function Repositories() {
-    const [request, setRequest] = useState('jetrockets')
-    const [repositories, setRepositories] = useState([])
-    const [totalCount, setTotalCount] = useState(0)
-    const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(4)
-    const [isLoading, setIsLoading] = useState(false)
+const Repositories = observer(() => {
 
-    useMemo(() => {
-        fetchRepositories(request, page)
-    }, [page])
-
-    async function fetchRepositories(request, page) {
-        setIsLoading(true)
-        const data = await RepositoryService.getRepositories(request, page, limit);
-
-        setRepositories(data?.items || [])
-        setTotalCount(data?.total_count)
-        setIsLoading(false)
-    }
+    const {countRepositories, isLoading, page} = repositories
 
     return (
         <div>
-            <Input setRequest={setRequest} fetchRepositories={fetchRepositories} />
-            <span className="repositories__count">Репозиториев найдено {totalCount}</span>
+            <Input />
+            <span className="repositories__count">Репозиториев найдено {countRepositories}</span>
 
             <div className="list__wrapper">
                 {isLoading
                     ? <Loader/>
                     : (
                         <div>
-                            <ListRepositories repositories={repositories} />
-                            <Pagination totalCount={totalCount} limit={limit} page={page} setPage={setPage} />
+                            <ListRepositories/>
+                            <Pagination
+                                totalCount={countRepositories}
+                                limit={10}
+                                page={page}
+                            />
                         </div>
                     )
                 }
@@ -46,6 +34,6 @@ function Repositories() {
             </div>
         </div>
     );
-}
+});
 
 export default Repositories;

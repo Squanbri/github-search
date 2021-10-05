@@ -1,18 +1,16 @@
-import React, {useMemo, useState} from 'react';
-import  '../../styles/Pagination.css';
+import React, {useMemo} from 'react';
+import '../../styles/Pagination.css';
+import repositories from "../../state/repositories";
 
-const Pagination = ({totalCount, limit, page, setPage}) => {
-    const [pageNumbers, setPageNumbers] = useState([])
-
+const Pagination = ({totalCount, limit, page}) => {
+    const pages = []
     const getPages = () => {
-        const result = []
         const totalPage = Math.ceil(totalCount / limit)
         for (let i = page - 2; i <= page + 2; i++) {
             if (i >= 1 && i <= totalPage) {
-                result.push(i)
+                pages.push(i)
             }
         }
-        setPageNumbers([...result])
     }
 
     useMemo(() => {
@@ -21,14 +19,14 @@ const Pagination = ({totalCount, limit, page, setPage}) => {
 
     return (
         <ul className="pagination">
-            {pageNumbers.length > 1
-                ? pageNumbers.map(p =>
+            {pages.length > 1
+                ? pages.map(num =>
                         <li
-                            className={page === p ? "pagination__button active" : "pagination__button"}
-                            key={p}
-                            onClick={() => setPage(p)}
+                            className={page === num ? "pagination__button active" : "pagination__button"}
+                            key={num}
+                            onClick={() => repositories.setPage(num)}
                         >
-                            {p}
+                            {num}
                         </li>
                     )
                 : ''

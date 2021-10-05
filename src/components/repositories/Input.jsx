@@ -1,27 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../styles/Input.css';
+import repositories from "../../state/repositories";
+import {observer} from "mobx-react-lite";
 
-const Input = ({setRequest, fetchRepositories}) => {
-    const [search, setSearch] = useState('jetrockets')
-
-    const toFetch = () => {
-        setRequest(search)
-        fetchRepositories(search)
-    }
-
+const Input = observer(() => {
     return (
         <div>
             <h1>Поиск репозитория</h1>
             <span>Введите название репозитория</span>
             <input
                 type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' ? toFetch(search) : ''}
+                value={repositories.search}
+                onChange={e => repositories.setSearch(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' ? repositories.sendFetch() : ''}
             />
-            <button onClick={() => toFetch()}>Искать</button>
+            <button onClick={() => repositories.sendFetch()}>Искать</button>
         </div>
     );
-};
+});
 
 export default Input;
