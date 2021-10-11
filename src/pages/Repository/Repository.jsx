@@ -1,20 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
-import RepositoryService from "../API/RepositoryService";
-import '../styles/RepositoryPage.css';
+import '../../styles/RepositoryPage.css';
+import RepositoryService from "../../API/RepositoryService";
 
 const Repository = () => {
     const [repository, setRepository] = useState()
-    let { owner, name } = useParams();
+    let { login, name } = useParams();
 
     useEffect(() => {
         fetchRepository()
     }, [])
 
     async function fetchRepository() {
-        const response =  await RepositoryService.getRepository(owner, name)
+        const response =  await RepositoryService.getRepository(login, name)
+        console.log(response)
         setRepository(response)
     }
+
 
     return (
         <div className="repository__wrapper">

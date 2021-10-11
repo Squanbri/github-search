@@ -5,8 +5,12 @@
     font-family: sans-serif;
 }
 
+#root {
+    overflow-x: hidden;
+}
+
 main {
     width: 900px;
-    margin: auto;
-    margin-top: 50px;
+    margin: 50px auto auto;
+    overflow-x: hidden;
 }

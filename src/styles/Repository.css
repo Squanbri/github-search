@@ -12,6 +12,8 @@
 }
 
 .repository__content {
+    width: 100%;
+    position: relative;
     display: flex;
     gap: 6px;
     flex-direction: column;
@@ -37,6 +39,28 @@
 
 .hide {
     display: none;
+}
+
+.repository__favourite {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+}
+
+.repository__favourite svg {
+    fill: white;
+    stroke: black;
+    stroke-width: 2px;
+    transition: stroke .25s ease-in-out;
+}
+
+.repository__favourite svg:hover {
+    stroke: #0969da;
+}
+
+.repository__favourite .favourite {
+    fill: #0969da;
 }
 
 .repository__stars svg {

@@ -1,9 +1,9 @@
 import React from "react";
 import './styles/App.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import Repositories from "./pages/Repositories";
-import Repository from "./pages/Repository";
-import Header from "./components/general/Header";
+import Repositories from "./pages/Repositories/Repositories";
+import Repository from "./pages/Repository/Repository";
+import Header from "./components/Header";
 
 function App() {
     return(
@@ -11,7 +11,7 @@ function App() {
             <Header/>
             <main>
                 <Route exact path="/" component={Repositories}/>
-                <Route path="/repository/:owner/:name" component={Repository}/>
+                <Route path="/repository/:login/:name" component={Repository}/>
             </main>
         </BrowserRouter>
     )

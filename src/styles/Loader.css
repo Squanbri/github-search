@@ -1,9 +1,9 @@
-svg {
+.loader {
     display: flex;
     margin: auto;
 }
 
-circle {
+.loader circle {
     fill: white;
     stroke: #61dafb;
     stroke-width: 5;

@@ -1,18 +1,20 @@
 import React from 'react';
-import Repository from "../repository/Repository";
+import Repository from "./Repository";
 import '../../styles/ListRepositories.css'
-import repositories from "../../state/repositories";
+import repositoriesStore from "../../store/repositories";
 import {observer} from "mobx-react-lite";
 
 const ListRepositories = observer(() => {
+    const {isEmpty, list} = repositoriesStore
+
     return (
         <div>
             <ul className="list__repositories">
-                { repositories.repositories.length === 0
+                { isEmpty
                     ? <div> Мы не нашли репзиториев по вашему запросу </div>
                     :
-                    repositories.repositories.map(repository =>
-                            <Repository repository={repository} key={repository.id}/>
+                        list?.map(rep =>
+                            <Repository repository={rep} key={rep.id}/>
                         )
                 }
             </ul>

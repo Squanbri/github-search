@@ -11,9 +11,9 @@ export default  class RepositoryService {
         }
     }
 
-    static async getRepository(owner, name) {
+    static async getRepository(login, name) {
         try {
-            const response = await axios.get(`https://api.github.com/repos/${owner}/${name}`)
+            const response = await axios.get(`https://api.github.com/repos/${login}/${name}`)
             return response.data
         }
         catch (e) {

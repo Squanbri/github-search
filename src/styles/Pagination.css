@@ -4,22 +4,3 @@
     gap: 10px;
     width: 100%;
 }
-
-.pagination__button {
-    width: fit-content;
-    padding: 10px 14px;
-    background-color: #20232a;
-    border: 1px solid #20232a;
-    color: #fff;
-    font-weight: bold;
-}
-
-.pagination__button:hover {
-    cursor: pointer;
-    border: 1px solid #61dafb;
-}
-
-.active {
-    color: #61dafb;
-    border: 1px solid #61dafb;
-}
