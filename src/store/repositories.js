@@ -1,6 +1,6 @@
 import {makeAutoObservable, observable, action, values} from "mobx";
 import RepositoryService from "../API/RepositoryService";
-import {Repository} from "./repository";
+import Repository from "./repository";
 
 class RepositoriesStore {
     search = 'jetrockets';
@@ -23,9 +23,13 @@ class RepositoriesStore {
         this.fetchRepositories()
     }
 
-    sendFetch() {
+    sendFetch = () => {
         this.page = 1
         this.fetchRepositories()
+    }
+
+    getRepByName(login, name) {
+        this.fetchRepository(login, name)
     }
 
     get isEmpty() {
@@ -52,6 +56,17 @@ class RepositoriesStore {
         })
 
         this.countRepositories = data.total_count
+        this.isLoading = false
+    }
+
+    async fetchRepository(login, name) {
+        this.isLoading = true
+
+        this.repositories.clear()
+        const data = await RepositoryService.getRepository(login, name);
+        const repository = new Repository(data);
+        this.repositories.set(data.id, repository)
+
         this.isLoading = false
     }
 }

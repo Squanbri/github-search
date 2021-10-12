@@ -4,8 +4,9 @@ import {ReactComponent as StarSvg} from '../../assets/icons/star.svg'
 import {ReactComponent as Favourite} from '../../assets/icons/like.svg'
 import {ReactComponent as RepositorySvg} from '../../assets/icons/repository.svg'
 import {Link} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
-const Repository = ({repository}) => {
+const Repository = observer(({repository}) => {
     return (
         <li>
             <Link to={`/repository/${repository.login}/${repository.name}`} className="repository__item">
@@ -29,7 +30,6 @@ const Repository = ({repository}) => {
                                 :"not"
                             }
                             onClick={e => {
-                                console.log('event')
                                 e.preventDefault()
                                 repository.updateFavourite()
                             }}
@@ -55,6 +55,6 @@ const Repository = ({repository}) => {
             </Link>
         </li>
     );
-};
+});
 
 export default Repository;

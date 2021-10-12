@@ -1,11 +1,11 @@
 import React from 'react';
 import Repository from "./Repository";
 import '../../styles/ListRepositories.css'
-import repositoriesStore from "../../store/repositories";
+import repsStore from "../../store/repositories";
 import {observer} from "mobx-react-lite";
 
 const ListRepositories = observer(() => {
-    const {isEmpty, list} = repositoriesStore
+    const {isEmpty, list} = repsStore
 
     return (
         <div>
@@ -13,9 +13,10 @@ const ListRepositories = observer(() => {
                 { isEmpty
                     ? <div> Мы не нашли репзиториев по вашему запросу </div>
                     :
-                        list?.map(rep =>
-                            <Repository repository={rep} key={rep.id}/>
-                        )
+                        list?.map(rep => {
+                            const repository = repsStore.repositories.get(rep.id)
+                            return <Repository repository={repository} key={rep.id}/>
+                        })
                 }
             </ul>
         </div>

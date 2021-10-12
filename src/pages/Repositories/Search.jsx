@@ -17,13 +17,14 @@ const Search = observer(() => {
                 onChange={e => setSearch(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' ? sendFetch() : ''}
             />
+                {console.log(repositories)}
             <Button
                 style={{
                     height: '40px',
                     width: '18%',
                     marginLeft: '2%',
                 }}
-                onClick={sendFetch.bind(repositories)}
+                onClick={sendFetch}
             >
                 Искать
             </Button>

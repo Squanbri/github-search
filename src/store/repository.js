@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import RepositoryService from "../API/RepositoryService";
 
-export class Repository {
+class Repository {
     name
     login
     description
@@ -22,7 +22,6 @@ export class Repository {
     }
 
     updateFavourite() {
-        console.log('update')
         this.favourite = !this.favourite
     }
 
@@ -39,7 +38,6 @@ export class Repository {
     }
 
     get isFavourite() {
-        console.log('change')
         return this.favourite
     }
 }

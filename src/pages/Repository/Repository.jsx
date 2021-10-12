@@ -1,29 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
 import '../../styles/RepositoryPage.css';
-import RepositoryService from "../../API/RepositoryService";
+import repositories from "../../store/repositories";
+import {observer} from "mobx-react-lite";
 
-const Repository = () => {
-    const [repository, setRepository] = useState()
+const Repository = observer(() => {
     let { login, name } = useParams();
 
     useEffect(() => {
-        fetchRepository()
+        // fetchRepository()
+        repositories.getRepByName(login, name)
+
+        return () => {
+            repositories.repositories.clear()
+        }
     }, [])
-
-    async function fetchRepository() {
-        const response =  await RepositoryService.getRepository(login, name)
-        console.log(response)
-        setRepository(response)
-    }
-
 
     return (
         <div className="repository__wrapper">
-            <img src={repository?.owner?.avatar_url} alt=""/>
+            <img src={repositories.list[0]?.avatar} alt=""/>
             <Link to="/" className="back">Назад</Link>
         </div>
     );
-};
+});
 
 export default Repository;
