@@ -5,10 +5,9 @@ import repositories from "../../store/repositories";
 import {observer} from "mobx-react-lite";
 
 const Repository = observer(() => {
-    let { login, name } = useParams();
+    const { login, name } = useParams();
 
     useEffect(() => {
-        // fetchRepository()
         repositories.getRepByName(login, name)
 
         return () => {
@@ -19,6 +18,7 @@ const Repository = observer(() => {
     return (
         <div className="repository__wrapper">
             <img src={repositories.list[0]?.avatar} alt=""/>
+            <p>{repositories.list[0]?.description}</p>
             <Link to="/" className="back">Назад</Link>
         </div>
     );
