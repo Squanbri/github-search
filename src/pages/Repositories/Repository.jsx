@@ -25,7 +25,7 @@ const Repository = observer(({repository}) => {
 
                     <span className="repository__favourite">
                         <Favourite
-                            className={repository.favourite !== false
+                            className={repository.isFavourite
                                 ?"favourite"
                                 :"not"
                             }
